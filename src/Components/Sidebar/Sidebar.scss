@@ -1,0 +1,7 @@
+@import '../../main';
+
+.sidebar {
+    background-color: $side-color;
+    width: calc(5vh + 1vw);
+    min-height: 100vh;
+}

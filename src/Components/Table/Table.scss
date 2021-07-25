@@ -1,0 +1,17 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: 1px solid black;
+
+        td,
+        th {
+            padding: 10px;
+        }
+    }
+}
+
+.table__header {
+    cursor: pointer;
+}

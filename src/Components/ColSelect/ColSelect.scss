@@ -1,0 +1,12 @@
+.colSelect {
+    padding: 1%;
+    width: 98%;
+    .MuiCardActions-root {
+        flex-direction: row-reverse !important;
+    }
+}
+.colSelect__metrics {
+    > * {
+        margin: 1% 1% 0 0;
+    }
+}
