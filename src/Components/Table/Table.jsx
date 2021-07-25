@@ -15,40 +15,42 @@ function Table() {
     }, [dispatch]);
     return (
         <Card>
-            <table className='table'>
-                <thead>
-                    <tr>
-                        {
-                            metrics.map(metric => metric.status && (
-                                <th
-                                    className="table__header"
-                                    align='left'
-                                    onClick={() => dispatch(fireSortCol(metric.metric))}
-                                    key={metric.metric}
-                                >
-                                    {metric.metric}
-                                </th>
-                            ))
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        data.map(_d => (<tr key={_d.app_id + _d.date}>
+            <div style={{ overflowX: 'auto' }}>
+                <table className='table'>
+                    <thead>
+                        <tr>
                             {
-                                metrics.map((metric, i) => metric.status && (
-                                    <td
-                                        key={'td' + i}
+                                metrics.map(metric => metric.status && (
+                                    <th
+                                        className="table__header"
+                                        align='left'
+                                        onClick={() => dispatch(fireSortCol(metric.metric))}
+                                        key={metric.metric}
                                     >
-                                        {dataFormatter(_d, metric.metric)}
-                                    </td>
+                                        {metric.metric}
+                                    </th>
                                 ))
                             }
-                        </tr>))
-                    }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data.map(_d => (<tr key={_d.app_id + _d.date}>
+                                {
+                                    metrics.map((metric, i) => metric.status && (
+                                        <td
+                                            key={'td' + i}
+                                        >
+                                            {dataFormatter(_d, metric.metric)}
+                                        </td>
+                                    ))
+                                }
+                            </tr>))
+                        }
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </Card >
     )
 }

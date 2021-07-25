@@ -27,7 +27,6 @@ function nFormatter(num, digits = 1) {
 
 function dataFormatter(data, col) {
     const apps = store.getState().apps;
-
     switch (col) {
         case 'Date':
             return formatDate(new Date(data?.date)) ?? '';
@@ -36,32 +35,33 @@ function dataFormatter(data, col) {
                 apps.find((app) => app?.app_id === data?.app_id)?.app_name ?? ''
             );
         case 'Clicks':
-            return nFormatter(data?.clicks) ?? '';
+            return nFormatter(data?.clicks) ?? '--';
         case 'Ad Requests':
-            return nFormatter(data?.requests) ?? '';
+            return nFormatter(data?.requests) ?? '--';
         case 'Ad Response':
-            return nFormatter(data?.responses) ?? '';
+            return nFormatter(data?.responses) ?? '--';
         case 'Impression':
-            return nFormatter(data?.impressions) ?? '';
+            return nFormatter(data?.impressions) ?? '--';
         case 'Revenue':
             return (
-                `$${nFormatter(Math.round(data?.revenue * 100) / 100)}` ?? ''
+                `$${nFormatter(Math.round(data?.revenue * 100) / 100)}` ?? '--'
             );
         case 'Fill Rate':
             return (
                 `${
                     Math.round((data?.requests / data?.responses) * 1000) / 10
-                }%` ?? ''
+                }%` ?? '--'
             );
         case 'CTR':
             return (
                 `${
                     Math.round((data?.clicks / data?.impressions) * 1000) / 10
-                }%` ?? ''
+                }%` ?? '--'
             );
 
         default:
-            return 'hello';
+            console.log(data, col);
+            return '--';
     }
 }
 

@@ -38,3 +38,8 @@ export const fireSortCol = (sortBy) => ({
     type: actionTypes.ON_SORT_COL,
     payload: sortBy,
 });
+
+export const colReorder = (data) => ({
+    type: actionTypes.COL_REORDER,
+    payload: data,
+});

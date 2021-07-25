@@ -50,6 +50,11 @@ const reducer = (state = INIT_STATE, action) => {
                 data: [...action.payload],
                 sortAscending: state.sortAscending * -1,
             };
+        case actionTypes.COL_REORDER:
+            return {
+                ...state,
+                metrics: [...action.payload],
+            };
 
         default:
             return state;

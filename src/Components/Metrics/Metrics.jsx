@@ -1,5 +1,4 @@
 import React from 'react';
-import Chip from '@material-ui/core/Chip';
 import { useDispatch } from 'react-redux';
 import { toggleCol } from '../../redux/actions';
 import './Metrics.scss';
@@ -12,13 +11,13 @@ function Metrics({ data }) {
         dispatch(toggleCol(data.metric));
     }
     return (
-        <Chip
+        <div
             draggable='true'
             className="metrics"
-            label={data.metric}
-            color={data.status ? 'primary' : 'secondary'}
-            onDelete={handleClick}
-        />
+            status={data.status ? 'true' : 'false'}
+            onClick={handleClick}
+        >{data.metric} </div>
+
     )
 }
 

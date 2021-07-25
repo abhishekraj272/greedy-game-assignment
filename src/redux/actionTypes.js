@@ -7,6 +7,7 @@ const actionTypes = Object.freeze({
     TOGGLE_COL: 'TOGGLE_COL',
     SORT_COL: 'SORT_COL',
     ON_SORT_COL: 'ON_SORT_COL',
+    COL_REORDER: 'COL_REORDER',
 });
 
 export default actionTypes;

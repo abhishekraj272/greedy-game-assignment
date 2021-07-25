@@ -6,6 +6,8 @@
     }
 }
 .colSelect__metrics {
+    display: flex;
+    flex-wrap: wrap;
     > * {
         margin: 1% 1% 0 0;
     }

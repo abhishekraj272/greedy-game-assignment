@@ -1,5 +1,14 @@
+@import '../../main';
+
 .metrics {
-    cursor: move;
+    cursor: pointer;
+    background-color: $btn-color;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.metrics[status='false'] {
+    background-color: #ff6767;
 }
 
 .over {
