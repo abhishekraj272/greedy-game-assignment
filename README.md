@@ -38,4 +38,6 @@ npm start
     - Drag N Drop metrices.
     - Click on Apply Changes.
 4. Responsive Table
+    - Table is scrollable on X-Axis
 5. Data Cache Layer
+    - With time specified in network calls.
