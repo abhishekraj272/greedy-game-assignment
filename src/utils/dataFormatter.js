@@ -1,4 +1,4 @@
-import store from '../redux/store';
+import persistedStore from '../redux/store';
 
 const formatDate = (d) =>
     d.toString().replace(/\w+ (\w+) (\d+) (\d+).*/, '$2-$1-$3');
@@ -26,7 +26,7 @@ function nFormatter(num, digits = 1) {
 }
 
 function dataFormatter(data, col) {
-    const apps = store.getState().apps;
+    const apps = persistedStore.store.getState().apps;
     switch (col) {
         case 'Date':
             return formatDate(new Date(data?.date)) ?? '';
@@ -60,7 +60,6 @@ function dataFormatter(data, col) {
             );
 
         default:
-            console.log(data, col);
             return '--';
     }
 }

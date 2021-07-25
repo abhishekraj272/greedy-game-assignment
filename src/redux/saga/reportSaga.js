@@ -2,13 +2,13 @@ import { all, call, put, debounce, takeLatest } from 'redux-saga/effects';
 import actionTypes from '../actionTypes';
 import APIs from '../../api/api';
 import { addData, sortCol, updateErr } from '../actions';
-import store from '../store';
+import persistedStore from '../store';
 
 function* getReportData({ payload }) {
     const currTime = Math.round(new Date().getTime() / 1000);
 
-    if (currTime < store.getState().appCacheExp) {
-        const prevDate = store.getState().date;
+    if (currTime < persistedStore.store.getState().reportCacheExp) {
+        const prevDate = persistedStore.store.getState().date;
         if (
             payload.startDate === prevDate.startDate &&
             payload.endDate === prevDate.endDate
@@ -35,8 +35,8 @@ function* getReportData({ payload }) {
 }
 
 function* sortReportData({ payload }) {
-    const reports = store.getState().data;
-    const sortDir = store.getState().sortAscending;
+    const reports = persistedStore.store.getState().data;
+    const sortDir = persistedStore.store.getState().sortAscending;
     switch (payload) {
         case 'Date':
             reports.sort(

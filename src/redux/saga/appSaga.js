@@ -2,12 +2,12 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 import actionTypes from '../actionTypes';
 import APIs from '../../api/api';
 import { addApps, updateErr } from '../actions';
-import store from '../store';
+import persistedStore from '../store';
 
 function* getAppData() {
     const currTime = Math.round(new Date().getTime() / 1000);
 
-    if (currTime < store.getState().appCacheExp) {
+    if (currTime < persistedStore.store.getState().appCacheExp) {
         return;
     }
 

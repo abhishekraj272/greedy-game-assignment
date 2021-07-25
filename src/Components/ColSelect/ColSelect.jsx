@@ -41,10 +41,6 @@ function ColSelect() {
                 <Button variant="contained" color="primary" onClick={updateMetricsOrder}>
                     Apply Changes
                 </Button>
-                &nbsp;
-                <Button variant="outlined" color="primary">
-                    Close
-                </Button>
             </CardActions>
         </Card>
     )

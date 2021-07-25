@@ -1,13 +1,14 @@
 import { Button, Card, TextField } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fireAppsAPI, fireDataAPI, toggleSettings } from '../../redux/actions';
 import './BtnArea.scss';
 
 function BtnArea() {
     const dispatch = useDispatch();
+    const prevDate = useSelector(state => state.date)
 
-    const [date, setDate] = useState({ startDate: "2021-05-01", endDate: "2021-05-03" });
+    const [date, setDate] = useState(prevDate);
 
     useEffect(() => {
         dispatch(fireAppsAPI());
