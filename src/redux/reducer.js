@@ -11,8 +11,8 @@ const INIT_STATE = {
     sortAscending: 1,
     settings: false,
     date: {
-        startDate: null,
-        endDate: null,
+        startDate: '2021-05-01',
+        endDate: '2021-05-03',
     },
 };
 
