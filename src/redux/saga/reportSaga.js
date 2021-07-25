@@ -5,6 +5,17 @@ import { addData, sortCol, updateErr } from '../actions';
 import store from '../store';
 
 function* getReportData({ payload }) {
+    const currTime = Math.round(new Date().getTime() / 1000);
+
+    if (currTime < store.getState().appCacheExp) {
+        const prevDate = store.getState().date;
+        if (
+            payload.startDate === prevDate.startDate &&
+            payload.endDate === prevDate.endDate
+        )
+            return;
+    }
+
     try {
         const res = yield call(
             APIs.getReport,
@@ -12,10 +23,11 @@ function* getReportData({ payload }) {
             payload.endDate
         );
 
-        if (!res || res.status !== 200) {
+        if (!res?.data?.data || res.status !== 200) {
             yield put(updateErr({ val: true, msg: 'Something went wrong' }));
             return;
         }
+        res.data['date'] = payload;
         yield put(addData(res.data));
     } catch (err) {
         yield put(updateErr({ val: true, msg: err.message }));

@@ -2,13 +2,18 @@ import metrics from '../constants/metrics';
 import actionTypes from './actionTypes';
 
 const INIT_STATE = {
-    error: null,
+    error: { val: false, msg: '' },
     data: [],
     apps: [],
     appCacheExp: 0,
     reportCacheExp: 0,
     metrics: metrics.map((metric) => ({ metric, status: true })),
     sortAscending: 1,
+    settings: false,
+    date: {
+        startDate: null,
+        endDate: null,
+    },
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -16,10 +21,13 @@ const reducer = (state = INIT_STATE, action) => {
         case actionTypes.UPDATE_ERR:
             return { ...state, error: action.payload };
 
+        case actionTypes.TOGGLE_SETTINGS:
+            return { ...state, settings: !state.settings };
+
         case actionTypes.ADD_APPS:
             return {
                 ...state,
-                apps: [...state.apps, ...action.payload.data],
+                apps: action.payload.data,
                 appCacheExp:
                     Math.round(new Date().getTime() / 1000) +
                     action.payload.cache_time,
@@ -28,10 +36,12 @@ const reducer = (state = INIT_STATE, action) => {
         case actionTypes.ADD_DATA:
             return {
                 ...state,
-                data: [...state.data, ...action.payload.data],
+                data: action.payload.data,
                 reportCacheExp:
                     Math.round(new Date().getTime() / 1000) +
                     action.payload.cache_time,
+                date: action.payload.date,
+                error: { val: false, msg: '' },
             };
 
         case actionTypes.TOGGLE_COL:

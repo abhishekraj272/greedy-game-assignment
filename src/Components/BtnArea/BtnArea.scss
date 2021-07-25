@@ -1,0 +1,12 @@
+@import '../../main';
+
+.btnArea {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btnArea__left {
+    padding: 5px;
+}

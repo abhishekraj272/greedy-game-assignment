@@ -29,6 +29,10 @@ export const toggleCol = (data) => ({
     payload: data,
 });
 
+export const toggleSettings = () => ({
+    type: actionTypes.TOGGLE_SETTINGS,
+});
+
 export const sortCol = (sortBy) => ({
     type: actionTypes.SORT_COL,
     payload: sortBy,
